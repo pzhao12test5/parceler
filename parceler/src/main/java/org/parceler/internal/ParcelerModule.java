@@ -206,12 +206,10 @@ public class ParcelerModule {
         generators.addPair("android.os.IBinder", "readStrongBinder", "writeStrongBinder");
         generators.add(Matchers.type(new ASTStringType("android.os.Bundle")).ignoreGenerics().build(), new BundleReadWriteGenerator("readBundle", "writeBundle", "android.os.Bundle"));
         generators.add(new ObservableFieldMatcher(generators), nullCheckFactory.get(new ObservableFieldReadWriteGenerator(generators, generationUtil)));
-        generators.add(new MutableLiveDataMatcher(generators), nullCheckFactory.get(new MutableLiveDataReadWriteGenerator(generators, generationUtil, namer)));
         generators.addPair("android.util.SparseBooleanArray", "readSparseBooleanArray", "writeSparseBooleanArray");
         generators.add(Matchers.type(new ASTStringType("android.util.SparseArray")).ignoreGenerics().build(), new SparseArrayReadWriteGenerator(generationUtil, namer, generators, astClassFactory, codeModel));
         generators.add(new InheritsMatcher(new ASTStringType("android.os.Parcelable")), new ParcelableReadWriteGenerator("readParcelable", "writeParcelable", "android.os.Parcelable"));
         generators.add(new EnumMatcher(), enumReadWriteGenerator);
-        generators.add(new RemoterMatcher(), new RemoterReadWriteGenerator(generationUtil, namer));
         generators.add(new ParcelMatcher(externalParcelRepository), parcelReadWriteGenerator);
         generators.add(new ASTArrayMatcher(), new ArrayReadWriteGenerator(generationUtil, namer, generators, codeModel));
         generators.add(new GenericCollectionMatcher(astClassFactory.getType(List.class), generators, 1), new ListReadWriteGenerator(generationUtil, namer, generators, astClassFactory, codeModel, ArrayList.class, true));
