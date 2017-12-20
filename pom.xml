@@ -3,7 +3,7 @@
 
     <groupId>org.parceler</groupId>
     <artifactId>parceler-project</artifactId>
-    <version>1.1.10-SNAPSHOT</version>
+    <version>1.1.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Parceler Project</name>
@@ -71,11 +71,6 @@
                     <strictCheck>true</strictCheck>
                 </configuration>
             </plugin>
-        <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19</version>
-            </plugin>
         </plugins>
     <extensions>
             <extension>
@@ -84,13 +79,13 @@
                 <version>3.5.0</version>
             </extension>
         </extensions>
-        <properties>
-            <gib.commitRange>${env.TRAVIS_COMMIT_RANGE}</gib.commitRange>
-            <gib.enabled>true</gib.enabled>
-            <gib.useEkstazi>true</gib.useEkstazi>
-            <gib.excludePathRegex>(.*\.txt$)|(.*\.md$)|(.*\.html$)|(.*\.rst$)|(.*\.scss$)|(.*\.css$)|(.*\.png$)|(.*\.py$)|(.*README$)|(.*\.jpg$)|(.*\.jpeg$)|(.*NOTICE$)|(.*\.gitignore$)</gib.excludePathRegex>
-        </properties>
     </build>
 
+<properties>
+        <gib.commitRange>${env.TRAVIS_COMMIT_RANGE}</gib.commitRange>
+        <gib.enabled>true</gib.enabled>
+        <gib.useEkstazi>true</gib.useEkstazi>
+        <gib.excludePathRegex>(.*\.apt$)|(.*\.txt$)|(.*\.md$)|(.*\.html$)|(.*\.rst$)|(.*\.scss$)|(.*\.css$)|(.*\.png$)|(.*\.py$)|(.*README$)|(.*\.jpg$)|(.*\.jpeg$)|(.*NOTICE$)|(.*\.gitignore$)</gib.excludePathRegex>
+    </properties>
 </project>
 
